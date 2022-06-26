@@ -5,7 +5,7 @@
         <geom conaffinity="1" condim="1" contype="1" margin="0.001" material="geom" rgba="0.8 0.6 .4 1"/>
         <motor ctrllimited="true" ctrlrange="-1.57 1.57"/>
     </default>
-    <option integrator="RK4" iterations="50" solver="PGS" timestep="0.003">
+    <option integrator="RK4" iterations="50" solver="PGS" timestep="0.005">
     </option>
     <size nkey="5" nuser_geom="1"/>
     <visual>
@@ -39,7 +39,7 @@
         <geom condim="3" friction="1 .1 .1" material="MatPlane" name="floor" pos="0 0 0" rgba="0.8 0.9 0.8 1" size="20 20 0.125" type="plane"/>
 
         <!-- Surena V Lower Limb Robot Model-->
-        <body name="torso" pos="0 0 0.93">
+        <body name="torso" pos="0 0 0.94">
             <joint armature="0" damping="0" limited="false" name="root" pos="0 0 0" stiffness="0" type="free"/>
             <geom size="0.1 0.15 0.025" type="box" pos="0 0 0" rgba="0.752941 0.752941 0.752941 1" />
             <body name="r_hip_yaw_link" pos="0.016506 -0.1 -0.0256">
@@ -66,6 +66,7 @@
                                     <inertial pos="0.0261783 0.000138793 -0.0401537" quat="-0.00063479 0.690534 0.0010849 0.723299" mass="1.8066" diaginertia="0.0114808 0.00864049 0.00347388" />
                                     <joint name="r_ankle_roll_joint" pos="0 0 0" axis="-1 0 0" limited="true" range="-100 100" />
                                     <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="r_ankle_roll_link" />
+                                    <site name='r_sole_' pos='0 0 -0.05' type='box' group='4' size='.2 .1 .01'/>
                                 </body>
                             </body>
                         </body>
@@ -96,6 +97,7 @@
                                     <inertial pos="0.02617 0.00013891 -0.040175" quat="-0.000633409 0.690517 0.00108529 0.723315" mass="1.8051" diaginertia="0.0114776 0.00863905 0.00346976" />
                                     <joint name="l_ankle_roll_joint" pos="0 0 0" axis="-1 0 0" limited="true" range="-100 100" />
                                     <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="l_ankle_roll_link" />
+                                    <site name='l_sole_' pos='0 0 -0.05' type='box' group='4' size='.2 .1 .01'/>
                                 </body>
                             </body>
                         </body>
@@ -106,20 +108,27 @@
     </worldbody>
 
     <actuator>
-        <motor gear="100" joint="r_hip_yaw_joint" name="r_hip_yaw"/>
-        <motor gear="100" joint="r_hip_roll_joint" name="r_hip_roll"/>
-        <motor gear="100" joint="r_hip_pitch_joint" name="r_hip_pitch"/>
-        <motor gear="100" joint="r_knee_joint" name="r_knee"/>
-        <motor gear="100" joint="r_ankle_pitch_joint" name="r_ankle_pitch"/>
-        <motor gear="300" joint="r_ankle_roll_joint" name="r_ankle_roll"/>
+        <position gear="500" joint="r_hip_yaw_joint" name="r_hip_yaw"/>
+        <position gear="500" joint="r_hip_roll_joint" name="r_hip_roll"/>
+        <position gear="500" joint="r_hip_pitch_joint" name="r_hip_pitch"/>
+        <position gear="500" joint="r_knee_joint" name="r_knee"/>
+        <position gear="500" joint="r_ankle_pitch_joint" name="r_ankle_pitch"/>
+        <position gear="500" joint="r_ankle_roll_joint" name="r_ankle_roll"/>
         
-        <motor gear="100" joint="l_hip_yaw_joint" name="l_hip_yaw"/>
-        <motor gear="100" joint="l_hip_roll_joint" name="l_hip_roll"/>
-        <motor gear="100" joint="l_hip_pitch_joint" name="l_hip_pitch"/>
-        <motor gear="100" joint="l_knee_joint" name="l_knee"/>
-        <motor gear="100" joint="l_ankle_pitch_joint" name="l_ankle_pitch"/>
-        <motor gear="300" joint="l_ankle_roll_joint" name="l_ankle_roll"/>
+        <position gear="500" joint="l_hip_yaw_joint" name="l_hip_yaw"/>
+        <position gear="500" joint="l_hip_roll_joint" name="l_hip_roll"/>
+        <position gear="500" joint="l_hip_pitch_joint" name="l_hip_pitch"/>
+        <position gear="500" joint="l_knee_joint" name="l_knee"/>
+        <position gear="500" joint="l_ankle_pitch_joint" name="l_ankle_pitch"/>
+        <position gear="500" joint="l_ankle_roll_joint" name="l_ankle_roll"/>
 
     </actuator>
+
+    <sensor>
+        <force name="r_sole_f" site="r_sole_" />
+        <force name="l_sole_f" site="l_sole_" />
+        <torque name="r_sole_t" site="r_sole_" />
+        <torque name="l_sole_t" site="l_sole_" />
+    </sensor>
 
 </mujoco>
