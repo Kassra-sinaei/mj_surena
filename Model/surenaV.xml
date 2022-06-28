@@ -3,7 +3,7 @@
     <default>
         <joint armature="1" damping="1" limited="true"/>
         <geom conaffinity="1" condim="1" contype="1" margin="0.001" material="geom" rgba="0.8 0.6 .4 1"/>
-        <motor ctrllimited="true" ctrlrange="-1.57 1.57"/>
+        <!--motor ctrllimited="true" ctrlrange="-1.57 1.57"/-->
     </default>
     <option integrator="RK4" iterations="50" solver="PGS" timestep="0.005">
     </option>
@@ -40,7 +40,7 @@
 
         <!-- Surena V Lower Limb Robot Model-->
         <body name="torso" pos="0 0 0.94">
-            <joint armature="0" damping="0" limited="false" name="root" pos="0 0 0" stiffness="0" type="free"/>
+            <!--joint armature="0" damping="0" limited="false" name="root" pos="0 0 0" stiffness="0" type="free"/-->
             <geom size="0.1 0.15 0.025" type="box" pos="0 0 0" rgba="0.752941 0.752941 0.752941 1" />
             <body name="r_hip_yaw_link" pos="0.016506 -0.1 -0.0256">
                 <inertial pos="-0.07623 0.00014361 -0.090014" quat="0.37896 0.595667 0.598751 0.378242" mass="3.1729" diaginertia="0.0195846 0.0170547 0.00712107" />
@@ -108,19 +108,19 @@
     </worldbody>
 
     <actuator>
-        <position gear="500" joint="r_hip_yaw_joint" name="r_hip_yaw"/>
-        <position gear="500" joint="r_hip_roll_joint" name="r_hip_roll"/>
-        <position gear="500" joint="r_hip_pitch_joint" name="r_hip_pitch"/>
-        <position gear="500" joint="r_knee_joint" name="r_knee"/>
-        <position gear="500" joint="r_ankle_pitch_joint" name="r_ankle_pitch"/>
-        <position gear="500" joint="r_ankle_roll_joint" name="r_ankle_roll"/>
+        <general gear="1 0 0 0 0 0" joint="r_hip_yaw_joint" name="r_hip_yaw"/>
+        <general gear="1 0 0 0 0 0" joint="r_hip_roll_joint" name="r_hip_roll"/>
+        <general gear="1 0 0 0 0 0" joint="r_hip_pitch_joint" name="r_hip_pitch"/>
+        <general gear="1 0 0 0 0 0" joint="r_knee_joint" name="r_knee"/>
+        <general gear="1 0 0 0 0 0" joint="r_ankle_pitch_joint" name="r_ankle_pitch"/>
+        <general gear="1 0 0 0 0 0" joint="r_ankle_roll_joint" name="r_ankle_roll"/>
         
-        <position gear="500" joint="l_hip_yaw_joint" name="l_hip_yaw"/>
-        <position gear="500" joint="l_hip_roll_joint" name="l_hip_roll"/>
-        <position gear="500" joint="l_hip_pitch_joint" name="l_hip_pitch"/>
-        <position gear="500" joint="l_knee_joint" name="l_knee"/>
-        <position gear="500" joint="l_ankle_pitch_joint" name="l_ankle_pitch"/>
-        <position gear="500" joint="l_ankle_roll_joint" name="l_ankle_roll"/>
+        <general gear=" 1 0 0 0 0 0" joint="l_hip_yaw_joint" name="l_hip_yaw"/>
+        <general gear=" 1 0 0 0 0 0" joint="l_hip_roll_joint" name="l_hip_roll"/>
+        <general gear=" 1 0 0 0 0 0" joint="l_hip_pitch_joint" name="l_hip_pitch"/>
+        <general gear=" 1 0 0 0 0 0" joint="l_knee_joint" name="l_knee"/>
+        <general gear=" 1 0 0 0 0 0" joint="l_ankle_pitch_joint" name="l_ankle_pitch"/>
+        <general gear=" 1 0 0 0 0 0" joint="l_ankle_roll_joint" name="l_ankle_roll"/>
 
     </actuator>
 
