@@ -104,7 +104,7 @@ def offline_walk():
 
     # Move CoM Down
     for i in range(solver_frequency * 1):
-        q = surena.doIK([0.0,0.0,0.71 - (solver_frequency)* (0.71-planner.deltaZ_)], np.eye(3),[0.0,0.0975,0.0], np.eye(3),[0.0, -0.0975,0.0], np.eye(3))
+        q = surena.doIK([0.0,0.0,0.71 - (i/solver_frequency * 1) * (0.71-planner.deltaZ_)], np.eye(3),[0.0,0.0975,0.0], np.eye(3),[0.0, -0.0975,0.0], np.eye(3))
         sim.step()
         set_pose(np.array(q))
         viewer.render()
@@ -122,8 +122,8 @@ if __name__ == "__main__":
     sim = MjSim(model)
     viewer = MjViewer(sim)
 
-    p_gain = np.array([20] * 12)
-    d_gain = np.array([0.002] * 12)
+    p_gain = np.array([50] * 12)
+    d_gain = np.array([0.1] * 12)
     q_old = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     offline_walk()
